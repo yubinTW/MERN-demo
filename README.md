@@ -19,4 +19,5 @@ npm init -y
 npm i fastify fastify-static pino-pretty
 npm i -D typescript @types/node
 npx tsc --init
+npm i -D concurrently nodemon
 ```

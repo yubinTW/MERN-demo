@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node out/index.js"
+    "start": "node out/index.js",
+    "dev": "concurrently \"tsc -w \" \"nodemon out/index.js\""
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,8 @@
   },
   "devDependencies": {
     "@types/node": "^15.12.5",
+    "concurrently": "^6.2.0",
+    "nodemon": "^2.0.9",
     "typescript": "^4.3.5"
   }
 }
