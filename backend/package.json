@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc",
     "start": "node out/index.js",
     "dev": "concurrently \"tsc -w \" \"nodemon out/index.js\""
@@ -13,11 +13,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "fastify": "^3.18.1",
     "fastify-static": "^4.2.2",
+    "mongoose": "^5.13.0",
     "pino-pretty": "^5.1.0"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^15.12.5",
     "concurrently": "^6.2.0",
     "nodemon": "^2.0.9",
