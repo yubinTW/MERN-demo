@@ -16,6 +16,10 @@ Run the backend app with node.
 
 Keep watching for code changes, recompile and restart.
 
+### ```npm run test```
+
+Run all unit tests with coverage rate.
+
 ## Run MongoDB with docker
 
 Make sure ```docker``` is installed

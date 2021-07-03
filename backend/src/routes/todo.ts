@@ -20,18 +20,18 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
         }
     })
 
-    server.post('/todo', opts, async (request, reply) => {
+    server.post('/todos', opts, async (request, reply) => {
         try {
             const todoBody: ITodo = request.body as ITodo
             const todo: ITodo = await todoRepo.addTodo(todoBody)
             return reply.status(201).send({ todo })
         } catch (error) {
-            console.error(`POST /todo Error: ${error}`)
+            console.error(`POST /todos Error: ${error}`)
             return reply.status(500).send(`[Server Error]: ${error}`)
         }
     })
 
-    server.put<{ Params: IdParam }>('/todo/:id', opts, async (request, reply) => {
+    server.put<{ Params: IdParam }>('/todos/:id', opts, async (request, reply) => {
         try {
             const id = request.params.id
             const todoBody = request.body as ITodo
@@ -42,12 +42,12 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
                 return reply.status(404).send({ msg: `Not Found Todo:${id}` })
             }
         } catch (error) {
-            console.error(`PUT /todo Error: ${error}`)
+            console.error(`PUT /todos/${request.params.id} Error: ${error}`)
             return reply.status(500).send(`[Server Error]: ${error}`)
         }
     })
 
-    server.delete<{ Params: IdParam }>('/todo/:id', opts, async (request, reply) => {
+    server.delete<{ Params: IdParam }>('/todos/:id', opts, async (request, reply) => {
         try {
             const id = request.params.id
             const todo: ITodo | null = await todoRepo.deleteTodo(id)
@@ -57,7 +57,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
                 return reply.status(404).send({ msg: `Not Found Todo:${id}` })
             }
         } catch (error) {
-            console.error(`DELETE /todo Error: ${error}`)
+            console.error(`DELETE /todos/${request.params.id} Error: ${error}`)
             return reply.status(500).send(`[Server Error]: ${error}`)
         }
     })
