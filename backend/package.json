@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watchAll --verbose --coverage --detectOpenHandles --forceExit",
     "build": "tsc",
     "start": "node out/index.js",
     "dev": "concurrently \"tsc -w \" \"nodemon out/index.js\""
@@ -13,11 +13,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^26.0.23",
     "dotenv": "^10.0.0",
     "fastify": "^3.18.1",
     "fastify-static": "^4.2.2",
+    "fp-ts": "^2.10.5",
+    "jest": "^27.0.6",
+    "mongodb-memory-server": "^7.0.0",
     "mongoose": "^5.13.0",
-    "pino-pretty": "^5.1.0"
+    "pino-pretty": "^5.1.0",
+    "ts-jest": "^27.0.3"
   },
   "devDependencies": {
     "@types/mongoose": "^5.11.97",
