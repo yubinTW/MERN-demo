@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import TodoItem from './components/TodoItem'
 import AddTodo from './components/AddTodo'
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
-import './App.css';
+import './App.css'
 
 const App = () => {
   const [todos, setTodos] = useState<ITodo[]>([])
@@ -54,4 +54,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App
