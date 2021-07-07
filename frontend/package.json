@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,7 +45,8 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/reportWebVitals.ts",
-      "!src/index.tsx"
+      "!src/index.tsx",
+      "!src/react-app-env.d.ts"
     ]
   }
 }
