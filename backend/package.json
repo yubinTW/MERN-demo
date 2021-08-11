@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --verbose --coverage --detectOpenHandles --forceExit",
+    "test": "jest --coverage --runInBand",
     "build": "tsc",
     "start": "node out/index.js",
     "dev": "concurrently \"tsc -w \" \"nodemon out/index.js\""
