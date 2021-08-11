@@ -7,7 +7,8 @@
     "test": "jest --coverage --runInBand",
     "build": "tsc",
     "start": "node out/index.js",
-    "dev": "concurrently \"tsc -w \" \"nodemon out/index.js\""
+    "dev": "concurrently \"tsc -w \" \"nodemon out/index.js\"",
+    "fix-prettier": "prettier --write \"./{src,test,examples,scripts}/**/*.ts\""
   },
   "keywords": [],
   "author": "",
@@ -30,6 +31,7 @@
     "concurrently": "^6.2.0",
     "fastify-cors": "^6.0.1",
     "nodemon": "^2.0.9",
+    "prettier": "^2.3.2",
     "typescript": "^4.3.5"
   }
 }
