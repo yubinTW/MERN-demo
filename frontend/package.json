@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "fix-prettier": "prettier --write \"./{src,test,examples,scripts}/**/*.ts\""
   },
   "eslintConfig": {
     "extends": [
@@ -48,5 +49,8 @@
       "!src/index.tsx",
       "!src/react-app-env.d.ts"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1"
   }
 }

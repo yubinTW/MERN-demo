@@ -1,16 +1,16 @@
 interface ITodo {
-    _id: string
-    name: string
-    description: string
-    status: boolean
-    createdAt?: string
-    updatedAt?: string
+  _id: string
+  name: string
+  description: string
+  status: boolean
+  createdAt?: string
+  updatedAt?: string
 }
 
 interface TodoProps {
-    todo: ITodo
+  todo: ITodo
 }
 
 type TodoResponse = {
-        todos: Array<ITodo>
+  todos: Array<ITodo>
 }

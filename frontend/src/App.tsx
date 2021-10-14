@@ -3,7 +3,6 @@ import TodoItem from './components/TodoItem'
 import AddTodo from './components/AddTodo'
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
 import './App.css'
-import { inspect } from 'util'
 
 const App = () => {
   const [todos, setTodos] = useState<ITodo[]>([])
@@ -13,14 +12,11 @@ const App = () => {
   }, [])
 
   const fetchTodos = async () => {
-    // const { data } = await getTodos()
-    // const { todos } = data
     try {
       const { data:{todos}} = await getTodos()
       setTodos(todos)
     } catch (error) {
-      console.log('faillllllllll')
-      console.log(`${error}`);
+      console.log(`fetch todos error: ${error}`);
     }
   }
 
