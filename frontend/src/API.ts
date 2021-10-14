@@ -2,13 +2,12 @@ import axios, { AxiosResponse } from 'axios'
 
 const API_URL = 'http://localhost:8888/api'
 
-const getTodos = async (): Promise<AxiosResponse<Array<ITodo>>> => {
+const getTodos = async (): Promise<AxiosResponse<TodoResponse>> => {
     try {
-        const todos = await axios.get(`${API_URL}/todos`)
-        return todos
+        const res = await axios.get<TodoResponse>(`${API_URL}/todoss`)
+        return Promise.resolve(res)
     } catch (error) {
-        console.error(`GET /api/todos ERROR: ${error}`)
-        throw new Error(error)
+        return Promise.reject(`GET /todos ERROR: ${error}`)
     }
 }
 
@@ -22,7 +21,7 @@ const addTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
         return todo
     } catch (error) {
         console.error(`POST /api/todos ERROR: ${error}`)
-        throw new Error(error)
+        throw new Error(`${error}`)
     }
 }
 
@@ -36,7 +35,7 @@ const updateTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
         return todo
     } catch (error) {
         console.error(`PUT /api/todos/${todoBody._id} ERROR: ${error}`)
-        throw new Error(error)
+        throw new Error(`${error}`)
     }
 }
 
@@ -46,7 +45,7 @@ const deleteTodo = async (id: string): Promise<AxiosResponse> => {
         return res
     } catch (error) {
         console.error(`DELETE /api/todos/${id} ERROR: ${error}`)
-        throw new Error(error)
+        throw new Error(`${error}`)
     }
 }
 

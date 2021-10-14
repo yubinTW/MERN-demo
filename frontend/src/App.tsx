@@ -3,6 +3,7 @@ import TodoItem from './components/TodoItem'
 import AddTodo from './components/AddTodo'
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
 import './App.css'
+import { inspect } from 'util'
 
 const App = () => {
   const [todos, setTodos] = useState<ITodo[]>([])
@@ -11,10 +12,16 @@ const App = () => {
     fetchTodos()
   }, [])
 
-  const fetchTodos = (): void => {
-    getTodos()
-      .then(({ data: { todos } }: ITodo[] | any) => setTodos(todos))
-      .catch((err: Error) => console.error(err))
+  const fetchTodos = async () => {
+    // const { data } = await getTodos()
+    // const { todos } = data
+    try {
+      const { data:{todos}} = await getTodos()
+      setTodos(todos)
+    } catch (error) {
+      console.log('faillllllllll')
+      console.log(`${error}`);
+    }
   }
 
   const handleSaveTodo = (e: React.FormEvent, formData: ITodo): void => {
