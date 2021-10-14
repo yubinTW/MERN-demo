@@ -11,7 +11,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
 
   server.get('/todos', opts, async (request, reply) => {
     try {
-      const todos: Array<ITodo> = await todoRepo.getTodos()
+      const todos = await todoRepo.getTodos()
       return reply.status(200).send({ todos })
     } catch (error) {
       console.error(`GET /todos Error: ${error}`)
@@ -21,8 +21,8 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
 
   server.post('/todos', opts, async (request, reply) => {
     try {
-      const todoBody: ITodo = request.body as ITodo
-      const todo: ITodo = await todoRepo.addTodo(todoBody)
+      const todoBody = request.body as ITodo
+      const todo = await todoRepo.addTodo(todoBody)
       return reply.status(201).send({ todo })
     } catch (error) {
       console.error(`POST /todos Error: ${error}`)
@@ -30,11 +30,11 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
     }
   })
 
-  server.put<{ Params: IdParam }>('/todos/:id', opts, async (request, reply) => {
+  server.put<{ Params: IdParam; Body: ITodo }>('/todos/:id', opts, async (request, reply) => {
     try {
       const id = request.params.id
-      const todoBody = request.body as ITodo
-      const todo: ITodo | null = await todoRepo.updateTodo(id, todoBody)
+      const todoBody = request.body
+      const todo = await todoRepo.updateTodo(id, todoBody)
       if (todo) {
         return reply.status(200).send({ todo })
       } else {
@@ -49,7 +49,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
   server.delete<{ Params: IdParam }>('/todos/:id', opts, async (request, reply) => {
     try {
       const id = request.params.id
-      const todo: ITodo | null = await todoRepo.deleteTodo(id)
+      const todo = await todoRepo.deleteTodo(id)
       if (todo) {
         return reply.status(204).send()
       } else {
