@@ -5,6 +5,7 @@ module.exports = {
     "^.+\\.(t|j)sx?$": "ts-jest",
   },
   testEnvironment: "node",
+  testPathIgnorePatterns: ["out"],
   moduleFileExtensions: [
     "ts",
     "tsx",
