@@ -1,10 +1,11 @@
 import axios, { AxiosResponse } from 'axios'
 
-const API_URL = 'http://localhost:8888/api'
+// const API_HOST = 'http://localhost:8888'
+const API_HOST = ''
 
 const getTodos = async (): Promise<AxiosResponse<TodoResponse>> => {
   try {
-    const res = await axios.get<TodoResponse>(`${API_URL}/todos`)
+    const res = await axios.get<TodoResponse>(`${API_HOST}/api/todos`)
     return Promise.resolve(res)
   } catch (error) {
     return Promise.reject(`GET /todos ERROR: ${error}`)
@@ -17,7 +18,7 @@ const addTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
       ...todoBody,
       status: false
     }
-    const todo = await axios.post(`${API_URL}/todos`, newTodo)
+    const todo = await axios.post(`${API_HOST}/api/todos`, newTodo)
     return todo
   } catch (error) {
     console.error(`POST /api/todos ERROR: ${error}`)
@@ -31,17 +32,17 @@ const updateTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
       ...todoBody,
       status: true
     }
-    const todo = await axios.put(`${API_URL}/todos/${todoBody._id}`, newTodo)
+    const todo = await axios.put(`${API_HOST}/api/todos/${todoBody.id}`, newTodo)
     return todo
   } catch (error) {
-    console.error(`PUT /api/todos/${todoBody._id} ERROR: ${error}`)
+    console.error(`PUT /api/todos/${todoBody.id} ERROR: ${error}`)
     throw new Error(`${error}`)
   }
 }
 
 const deleteTodo = async (id: string): Promise<AxiosResponse> => {
   try {
-    const res = await axios.delete(`${API_URL}/todos/${id}`)
+    const res = await axios.delete(`${API_HOST}/api/todos/${id}`)
     return res
   } catch (error) {
     console.error(`DELETE /api/todos/${id} ERROR: ${error}`)

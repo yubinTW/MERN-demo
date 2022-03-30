@@ -1,5 +1,5 @@
 interface ITodo {
-  _id: string
+  id: string
   name: string
   description: string
   status: boolean
