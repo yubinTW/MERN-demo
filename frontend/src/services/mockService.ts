@@ -2,7 +2,7 @@ import { createServer, Factory, Model, Response } from 'miragejs'
 
 export default function () {
   let count = 3
-  createServer({
+  return createServer({
     models: {
       todo: Model
     },

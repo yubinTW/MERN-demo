@@ -12,7 +12,7 @@ const AddTodo = (props: { saveTodo: (e: React.FormEvent, formData: ITodo) => voi
   }
 
   useEffect(() => {
-    setIsDisabled(formData.name == '' || formData.description == '')
+    setIsDisabled(formData.name === '' || formData.description === '')
   }, [formData])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
