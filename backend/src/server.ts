@@ -1,21 +1,20 @@
-import fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
+import fastify, { FastifyInstance } from 'fastify'
 import FastifyStatic from '@fastify/static'
 import FastifyCors from '@fastify/cors'
-import { Server, IncomingMessage, ServerResponse } from 'http'
 import path from 'path'
 import { establishConnection } from './plugins/mongodb'
 import { TodoRouter } from './routes/todo'
 
-const server: FastifyInstance<Server, IncomingMessage, ServerResponse> = fastify({
+const server: FastifyInstance = fastify({
   logger: { prettyPrint: true }
 })
 
-const startFastify: (port: number) => FastifyInstance<Server, IncomingMessage, ServerResponse> = (port) => {
+const startFastify: (port: number) => FastifyInstance = (port) => {
   server.register(FastifyCors, {})
 
-  server.listen(port, (err, _) => {
-    if (err) {
-      console.error(err)
+  server.listen(port, (error, _) => {
+    if (error) {
+      server.log.fatal(`${error}`)
     }
     establishConnection()
   })
@@ -25,7 +24,7 @@ const startFastify: (port: number) => FastifyInstance<Server, IncomingMessage, S
     prefix: '/'
   })
 
-  server.get('/ping', async (request: FastifyRequest, reply: FastifyReply) => {
+  server.get('/ping', async (request, reply) => {
     return reply.status(200).send({ msg: 'pong' })
   })
 
