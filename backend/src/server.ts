@@ -16,7 +16,9 @@ const startFastify: (port: number) => FastifyInstance = (port) => {
     if (error) {
       server.log.fatal(`${error}`)
     }
-    establishConnection()
+    if (process.env.NODE_ENV !== 'test') {
+      establishConnection()
+    }
   })
 
   server.register(FastifyStatic, {
