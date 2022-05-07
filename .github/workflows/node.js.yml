@@ -27,6 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: backend/package-lock.json
+    - run: pwd
     - run: printenv
     - run: npm ci
       working-directory: backend
