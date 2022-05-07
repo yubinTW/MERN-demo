@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "node out/index.js",
     "dev": "concurrently \"tsc -w \" \"nodemon out/index.js\"",
+    "check-prettier": "prettier --check \"./src/**/*.ts\"",
     "fix-prettier": "prettier --write \"./src/**/*.ts\""
   },
   "keywords": [

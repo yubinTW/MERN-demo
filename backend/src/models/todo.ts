@@ -21,4 +21,9 @@ const todoSchema: Schema = new Schema(
   }
 )
 
+todoSchema.set('toJSON', {
+  virtuals: true,
+  versionKey: false
+})
+
 export default model<ITodo>('Todo', todoSchema)
