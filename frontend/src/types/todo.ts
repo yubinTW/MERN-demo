@@ -1,4 +1,4 @@
-interface ITodo {
+export interface ITodo {
   id: string
   name: string
   description: string
@@ -7,10 +7,10 @@ interface ITodo {
   updatedAt?: string
 }
 
-interface TodoProps {
+export interface TodoProps {
   todo: ITodo
 }
 
-type TodoResponse = {
+export type TodoResponse = {
   todos: Array<ITodo>
 }

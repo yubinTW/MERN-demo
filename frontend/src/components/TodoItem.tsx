@@ -1,4 +1,4 @@
-import React from 'react'
+import { ITodo } from '../types/todo'
 
 const Todo = (props: { todo: ITodo; updateTodo: (todo: ITodo) => void; deleteTodo: (id: string) => void }) => {
   const checkTodo: string = props.todo.status ? `line-through` : ''

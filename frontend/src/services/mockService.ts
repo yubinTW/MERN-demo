@@ -1,6 +1,7 @@
 import { createServer, Factory, Model, Response } from 'miragejs'
+import { ITodo } from '../types/todo'
 
-export default function () {
+const startMockServer = () => {
   let count = 3
   return createServer({
     models: {
@@ -53,3 +54,5 @@ export default function () {
     }
   })
 }
+
+export { startMockServer }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TodoItem from './components/TodoItem'
 import AddTodo from './components/AddTodo'
 import { getTodos, addTodo, updateTodo, deleteTodo } from './services/nodeService'
+import { ITodo } from './types/todo'
 import './App.css'
 
 const App = () => {
