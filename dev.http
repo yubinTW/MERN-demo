@@ -1,0 +1,18 @@
+###
+
+GET http://localhost:8888/ping
+
+###
+
+GET http://localhost:8888/api/todos
+
+###
+
+POST http://localhost:8888/api/todos
+Content-Type: "application/json"
+
+{
+    "name": "Prepare slide",
+    "description": "Prepare slide about MERN workshop",
+    "status": false
+}

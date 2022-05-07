@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import { startFastify } from '../server'
 import { Server, IncomingMessage, ServerResponse } from 'http'
-import * as dbHandler from './db'
+import * as dbHandler from 'testcontainers-mongoose'
 import { ITodo } from '../types/todo'
 
 describe('Todo test', () => {
@@ -12,7 +12,7 @@ describe('Todo test', () => {
     await dbHandler.connect()
     server = startFastify(fastifyPort)
     await server.ready()
-  })
+  }, 300000)
 
   afterEach(async () => {
     await dbHandler.clearDatabase()
