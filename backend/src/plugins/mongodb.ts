@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
+import { env } from '../config'
 
 const establishConnection = () => {
-  const connectionString = process.env.MONGO_CONNECTION_STRING || 'mongodb://localhost:27017/myProject'
+  const connectionString = env.MONGO_CONNECTION_STRING
   mongoose.connect(connectionString, (error) => {
     if (error) {
       console.log(`Error in DB connection: ${error}`)

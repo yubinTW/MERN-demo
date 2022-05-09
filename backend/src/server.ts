@@ -4,9 +4,10 @@ import FastifyCors from '@fastify/cors'
 import path from 'path'
 import { establishConnection } from './plugins/mongodb'
 import { TodoRouter } from './routes/todo'
+import { env } from './config'
 
 const server: FastifyInstance = fastify({
-  logger: { prettyPrint: true }
+  logger: { prettyPrint: env.FASTIFY_PRETTY_PRINT }
 })
 
 const startFastify: (port: number) => FastifyInstance = (port) => {
@@ -16,7 +17,7 @@ const startFastify: (port: number) => FastifyInstance = (port) => {
     if (error) {
       server.log.fatal(`${error}`)
     }
-    if (process.env.NODE_ENV !== 'test') {
+    if (env.isDev || env.isProd) {
       establishConnection()
     }
   })
