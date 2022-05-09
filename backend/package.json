@@ -21,6 +21,7 @@
     "@fastify/static": "^5.0.2",
     "axios": "^0.27.2",
     "dotenv": "^16.0.0",
+    "envalid": "^7.3.1",
     "fastify": "^3.29.0",
     "fp-ts": "^2.12.1",
     "mongoose": "^6.3.2",

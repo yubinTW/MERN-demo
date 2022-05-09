@@ -1,10 +1,8 @@
 import { startFastify } from './server'
-import dotEnv from 'dotenv'
+import { env } from './config'
 
-dotEnv.config()
-const port = process.env.FASTIFY_PORT || 8888
+const port = env.FASTIFY_PORT
 
-// Start your server
-const server = startFastify(Number(port))
+const server = startFastify(port)
 
 export { server }
