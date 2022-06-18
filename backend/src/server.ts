@@ -7,20 +7,33 @@ import { TodoRouter } from './routes/todo'
 import { env } from './config'
 
 const server: FastifyInstance = fastify({
-  logger: { prettyPrint: env.FASTIFY_PRETTY_PRINT }
+  logger: {
+    transport: {
+      target: 'pino-pretty'
+    },
+    level: 'debug'
+  }
 })
+
+const listenAddress = '0.0.0.0'
 
 const startFastify: (port: number) => FastifyInstance = (port) => {
   server.register(FastifyCors, {})
 
-  server.listen(port, (error, _) => {
-    if (error) {
-      server.log.fatal(`${error}`)
+  server.listen(
+    {
+      port: env.FASTIFY_PORT,
+      host: listenAddress
+    },
+    (error, _) => {
+      if (error) {
+        server.log.fatal(`${error}`)
+      }
+      if (env.isDev || env.isProd) {
+        establishConnection()
+      }
     }
-    if (env.isDev || env.isProd) {
-      establishConnection()
-    }
-  })
+  )
 
   server.register(FastifyStatic, {
     root: path.join(__dirname, '../../frontend/build'),
