@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import TodoItem from '../components/TodoItem'
 import { ITodo } from '../types/todo'
+import React from 'react'
 
 test('should show the actions of todo', () => {
   const mockTodo: ITodo = {

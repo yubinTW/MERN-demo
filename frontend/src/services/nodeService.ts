@@ -5,8 +5,6 @@ const API_HOST = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_
 
 const getTodos = async (): Promise<AxiosResponse<TodoResponse>> => {
   try {
-    console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
-    console.log(`API_HOST = ${API_HOST}`)
     const res = await axios.get<TodoResponse>(`${API_HOST}/api/todos`)
     return Promise.resolve(res)
   } catch (error) {

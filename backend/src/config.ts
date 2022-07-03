@@ -1,18 +1,14 @@
-import { bool, cleanEnv, port, url } from 'envalid'
+import { cleanEnv, port, url } from 'envalid'
 import * as dotenv from 'dotenv'
+import { AppConfig } from './types/appConfig'
 
 dotenv.config()
 
-const env = cleanEnv(process.env, {
+const env: AppConfig = cleanEnv(process.env, {
   FASTIFY_PORT: port({
     default: 8888
   }),
-  FASTIFY_PRETTY_PRINT: bool({
-    default: false
-  }),
-  MONGO_CONNECTION_STRING: url({
-    default: 'mongodb://localhost:27017/myMERN'
-  })
+  MONGO_CONNECTION_STRING: url()
 })
 
 export { env }

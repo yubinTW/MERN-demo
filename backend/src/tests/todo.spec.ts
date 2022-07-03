@@ -3,6 +3,7 @@ import { startFastify } from '../server'
 import { Server, IncomingMessage, ServerResponse } from 'http'
 import * as dbHandler from 'testcontainers-mongoose'
 import { ITodo } from '../types/todo'
+import { AppConfig } from '../types/appConfig'
 
 describe('Todo test', () => {
   let server: FastifyInstance<Server, IncomingMessage, ServerResponse>
@@ -10,7 +11,11 @@ describe('Todo test', () => {
 
   beforeAll(async () => {
     await dbHandler.connect()
-    server = startFastify(fastifyPort)
+    const appConfig: AppConfig = {
+      FASTIFY_PORT: fastifyPort,
+      MONGO_CONNECTION_STRING: ''
+    }
+    server = await startFastify(appConfig)
     await server.ready()
   }, 300000)
 
