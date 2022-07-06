@@ -9,7 +9,7 @@ const todoSchema: Schema = new Schema(
     },
     description: {
       type: String,
-      required: true
+      default: ''
     },
     status: {
       type: Boolean,

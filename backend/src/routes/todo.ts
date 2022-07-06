@@ -19,7 +19,19 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
     }
   })
 
-  server.post('/todos', opts, async (request, reply) => {
+  const postTodosBodySchema = {
+    type: 'object',
+    required: ['name', 'status'],
+    properties: {
+      name: { type: 'string' },
+      description: { type: 'string' },
+      status: { type: 'string' }
+    }
+  }
+
+  const postOptions = { ...opts, schema: { body: postTodosBodySchema } }
+
+  server.post('/todos', postOptions, async (request, reply) => {
     try {
       const todoBody = request.body as ITodo
       const todo = await todoRepo.addTodo(todoBody)
