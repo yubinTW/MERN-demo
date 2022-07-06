@@ -41,11 +41,13 @@ const startFastify = async (appConfig: AppConfig) => {
 
   server.register(TodoRouter, { prefix: '/api' })
 
+  const fastifyConfig = {
+    port: appConfig.FASTIFY_PORT,
+    host: listenAddress
+  }
+
   try {
-    await server.listen({
-      port: appConfig.FASTIFY_PORT,
-      host: listenAddress
-    })
+    await server.listen(fastifyConfig)
   } catch (error) {
     server.log.fatal(`${error}`)
   }
