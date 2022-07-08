@@ -84,7 +84,7 @@ describe('Todo test', () => {
     expect(res.todo.status).toBe(false)
 
     // update by Id
-    const id = res.todo._id
+    const id = res.todo.id
     const updateByIdResponse = await server.inject({
       method: 'PUT',
       url: `/api/todos/${id}`,
@@ -119,7 +119,7 @@ describe('Todo test', () => {
     expect(res.todo.status).toBe(false)
 
     // delete by Id
-    const id = res.todo._id
+    const id = res.todo.id
     const deleteByIdResponse = await server.inject({
       method: 'DELETE',
       url: `/api/todos/${id}`
