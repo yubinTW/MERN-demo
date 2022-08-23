@@ -23,7 +23,7 @@ const startFastify = async (appConfig: AppConfig) => {
       await establishConnection(appConfig.MONGO_CONNECTION_STRING)
       server.log.info(`Mongo connect successfully`)
     } catch (error) {
-      server.log.fatal(`Failed to connecto mongodb: ${error}`)
+      server.log.fatal(`Failed to connect mongodb: ${error}`)
       throw new Error(`${error}`)
     }
   }

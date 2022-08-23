@@ -1,4 +1,4 @@
-import { FastifyInstance, RouteShorthandOptions, FastifyReply } from 'fastify'
+import { FastifyInstance, RouteShorthandOptions } from 'fastify'
 import { ITodo } from '../types/todo'
 import { TodoRepoImpl } from './../repo/todo-repo'
 import { todoResponseSchema, todosResponseSchema, postTodosBodySchema } from '../schemas/todo'
@@ -24,7 +24,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
       const todos = await todoRepo.getTodos()
       return reply.status(200).send({ todos })
     } catch (error) {
-      console.error(`GET /todos Error: ${error}`)
+      server.log.error(`GET /todos Error: ${error}`)
       return reply.status(500).send(`[Server Error]: ${error}`)
     }
   })
