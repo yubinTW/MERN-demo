@@ -18,7 +18,7 @@ const startFastify = async (appConfig: AppConfig) => {
     }
   })
 
-  if (!!appConfig.MONGO_CONNECTION_STRING) {
+  if (appConfig.MONGO_CONNECTION_STRING) {
     try {
       await establishConnection(appConfig.MONGO_CONNECTION_STRING)
       server.log.info(`Mongo connect successfully`)

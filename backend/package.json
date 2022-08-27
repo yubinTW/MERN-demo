@@ -9,7 +9,8 @@
     "start": "node out/index.js",
     "dev": "concurrently \"tsc -w \" \"nodemon out/index.js\"",
     "check-prettier": "prettier --check \"./src/**/*.ts\"",
-    "fix-prettier": "prettier --write \"./src/**/*.ts\""
+    "fix-prettier": "prettier --write \"./src/**/*.ts\"",
+    "check-lint": "eslint --color package.json \"src/**/*.ts\""
   },
   "keywords": [
     "MERN-demo"
@@ -30,7 +31,10 @@
   "devDependencies": {
     "@types/jest": "^28.1.7",
     "@types/node": "^18.7.11",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
     "concurrently": "^7.3.0",
+    "eslint": "^8.23.0",
     "jest": "^28.1.3",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
