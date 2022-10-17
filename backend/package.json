@@ -23,7 +23,7 @@
     "@sinclair/typebox": "^0.24.41",
     "dotenv": "^16.0.2",
     "envalid": "^7.3.1",
-    "fastify": "^4.8.1",
+    "fastify": "^4.9.0",
     "fp-ts": "^2.12.3",
     "mongoose": "^6.6.0",
     "pino-pretty": "^9.1.0"
