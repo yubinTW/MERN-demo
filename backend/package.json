@@ -18,27 +18,27 @@
   "author": "Yubin",
   "license": "ISC",
   "dependencies": {
-    "@fastify/cors": "^8.1.0",
+    "@fastify/cors": "^8.1.1",
     "@fastify/static": "^6.5.0",
-    "@sinclair/typebox": "^0.24.41",
-    "dotenv": "^16.0.2",
+    "@sinclair/typebox": "^0.24.51",
+    "dotenv": "^16.0.3",
     "envalid": "^7.3.1",
     "fastify": "^4.9.2",
-    "fp-ts": "^2.12.3",
-    "mongoose": "^6.6.0",
-    "pino-pretty": "^9.1.0"
+    "fp-ts": "^2.13.1",
+    "mongoose": "^6.7.1",
+    "pino-pretty": "^9.1.1"
   },
   "devDependencies": {
-    "@types/node": "^18.7.17",
-    "@typescript-eslint/eslint-plugin": "^5.37.0",
-    "@typescript-eslint/parser": "^5.37.0",
-    "@vitest/coverage-c8": "^0.24.3",
-    "concurrently": "^7.4.0",
-    "eslint": "^8.23.1",
-    "nodemon": "^2.0.19",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@vitest/coverage-c8": "^0.24.5",
+    "concurrently": "^7.5.0",
+    "eslint": "^8.27.0",
+    "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "testcontainers-mongoose": "^0.2.3",
-    "typescript": "^4.8.3",
-    "vitest": "^0.24.3"
+    "typescript": "^4.8.4",
+    "vitest": "^0.24.5"
   }
 }
