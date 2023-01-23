@@ -1,7 +1,7 @@
 import { ITodo } from './../types/todo'
-import { model, Schema } from 'mongoose'
+import mongoose from 'mongoose'
 
-const todoSchema: Schema = new Schema(
+const todoSchema: mongoose.Schema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -26,4 +26,4 @@ todoSchema.set('toJSON', {
   versionKey: false
 })
 
-export default model<ITodo>('Todo', todoSchema)
+export default mongoose.models.Todo || mongoose.model<ITodo>('Todo', todoSchema)
