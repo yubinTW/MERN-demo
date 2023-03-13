@@ -1,5 +1,5 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify'
-import { ITodo } from '../types/todo'
+import { Todo } from '../types/todo'
 import { TodoRepoImpl } from './../repo/todo-repo'
 import { todoResponseSchema, todosResponseSchema, postTodosBodySchema } from '../schemas/todo'
 
@@ -41,7 +41,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
 
   server.post('/todos', postTodosOptions, async (request, reply) => {
     try {
-      const todoBody = request.body as ITodo
+      const todoBody = request.body as Todo
       const todo = await todoRepo.addTodo(todoBody)
       return reply.status(201).send({ todo })
     } catch (error) {
@@ -50,7 +50,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
     }
   })
 
-  server.put<{ Params: IdParam; Body: ITodo }>('/todos/:id', opts, async (request, reply) => {
+  server.put<{ Params: IdParam; Body: Todo }>('/todos/:id', opts, async (request, reply) => {
     try {
       const id = request.params.id
       const todoBody = request.body

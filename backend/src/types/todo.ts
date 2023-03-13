@@ -1,9 +1,6 @@
-import { Document } from 'mongoose'
-
-interface ITodo extends Document {
+export type Todo = {
+  id: string
   name: string
   description: string
   status: boolean
 }
-
-export { ITodo }
