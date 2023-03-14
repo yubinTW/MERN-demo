@@ -1,11 +1,9 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify'
 import { Todo } from '../types/todo'
-import { TodoRepoImpl } from './../repo/todo-repo'
+import * as repo from './../repo/todo-repo'
 import { todoResponseSchema, todosResponseSchema, postTodosBodySchema } from '../schemas/todo'
 
 const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: (error?: Error) => void) => {
-  const todoRepo = TodoRepoImpl.of()
-
   interface IdParam {
     id: string
   }
@@ -21,7 +19,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
 
   server.get('/todos', getTodosResponseSchema, async (request, reply) => {
     try {
-      const todos = await todoRepo.getTodos()
+      const todos = await repo.getTodos()
       return reply.status(200).send({ todos })
     } catch (error) {
       server.log.error(`GET /todos Error: ${error}`)
@@ -42,7 +40,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
   server.post('/todos', postTodosOptions, async (request, reply) => {
     try {
       const todoBody = request.body as Todo
-      const todo = await todoRepo.addTodo(todoBody)
+      const todo = await repo.addTodo(todoBody)
       return reply.status(201).send({ todo })
     } catch (error) {
       server.log.error(`POST /todos Error: ${error}`)
@@ -54,7 +52,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
     try {
       const id = request.params.id
       const todoBody = request.body
-      const todo = await todoRepo.updateTodo(id, todoBody)
+      const todo = await repo.updateTodo(id, todoBody)
       if (todo) {
         return reply.status(200).send({ todo })
       } else {
@@ -69,7 +67,7 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
   server.delete<{ Params: IdParam }>('/todos/:id', opts, async (request, reply) => {
     try {
       const id = request.params.id
-      const todo = await todoRepo.deleteTodo(id)
+      const todo = await repo.deleteTodo(id)
       if (todo) {
         return reply.status(204).send()
       } else {
