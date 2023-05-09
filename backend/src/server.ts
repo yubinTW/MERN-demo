@@ -31,7 +31,7 @@ const startFastify = async (appConfig: AppConfig) => {
   server.register(FastifyCors, {})
 
   server.register(FastifyStatic, {
-    root: path.join(__dirname, '../../frontend/build'),
+    root: path.join(__dirname, '../../frontend/dist'),
     prefix: '/'
   })
 
