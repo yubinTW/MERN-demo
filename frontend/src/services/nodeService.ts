@@ -1,24 +1,22 @@
 import axios, { AxiosResponse } from 'axios'
 import { ITodo, TodoResponse } from '../types/todo'
 
-const API_HOST = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API_HOST
-
-const getTodos = async (): Promise<AxiosResponse<TodoResponse>> => {
+export const getTodos = async (): Promise<AxiosResponse<TodoResponse>> => {
   try {
-    const res = await axios.get<TodoResponse>(`${API_HOST}/api/todos`)
+    const res = await axios.get<TodoResponse>(`/api/todos`)
     return Promise.resolve(res)
   } catch (error) {
     return Promise.reject(`GET /todos ERROR: ${error}`)
   }
 }
 
-const addTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
+export const addTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
   try {
     const newTodo = {
       ...todoBody,
       status: false
     }
-    const todo = await axios.post(`${API_HOST}/api/todos`, newTodo)
+    const todo = await axios.post(`/api/todos`, newTodo)
     return todo
   } catch (error) {
     console.error(`POST /api/todos ERROR: ${error}`)
@@ -26,13 +24,13 @@ const addTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
   }
 }
 
-const updateTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
+export const updateTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
   try {
     const newTodo = {
       ...todoBody,
       status: true
     }
-    const todo = await axios.put(`${API_HOST}/api/todos/${todoBody.id}`, newTodo)
+    const todo = await axios.put(`/api/todos/${todoBody.id}`, newTodo)
     return todo
   } catch (error) {
     console.error(`PUT /api/todos/${todoBody.id} ERROR: ${error}`)
@@ -40,14 +38,12 @@ const updateTodo = async (todoBody: ITodo): Promise<AxiosResponse<ITodo>> => {
   }
 }
 
-const deleteTodo = async (id: string): Promise<AxiosResponse> => {
+export const deleteTodo = async (id: string): Promise<AxiosResponse> => {
   try {
-    const res = await axios.delete(`${API_HOST}/api/todos/${id}`)
+    const res = await axios.delete(`/api/todos/${id}`)
     return res
   } catch (error) {
     console.error(`DELETE /api/todos/${id} ERROR: ${error}`)
     throw new Error(`${error}`)
   }
 }
-
-export { getTodos, addTodo, updateTodo, deleteTodo }

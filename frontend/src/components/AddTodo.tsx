@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { ITodo } from '../types/todo'
 
 const AddTodo = (props: { saveTodo: (e: React.FormEvent, formData: ITodo) => void }) => {
-  const [formData, setFormData] = useState<ITodo>({ id: '', name: '', description: '', status: false })
+  const [formData, setFormData] = useState<ITodo>({
+    id: '',
+    name: '',
+    description: '',
+    status: false
+  })
   const [isDisabled, setIsDisabled] = useState<boolean>(() => false)
 
   const handleForm = (e: React.FormEvent<HTMLInputElement>): void => {

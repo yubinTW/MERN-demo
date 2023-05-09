@@ -1,57 +1,33 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject",
-    "check-prettier": "prettier --check \"./src/**/*.ts\"",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
     "fix-prettier": "prettier --write \"./src/**/*.{ts,tsx,css}\""
   },
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^28.1.6",
-    "@types/node": "^18.6.5",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "miragejs": "^0.1.45",
-    "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}",
-      "!src/reportWebVitals.ts",
-      "!src/index.tsx",
-      "!src/react-app-env.d.ts"
-    ]
+    "@types/node": "^20.1.1",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "miragejs": "^0.1.47",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
   }
 }
