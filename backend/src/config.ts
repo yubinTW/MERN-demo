@@ -4,11 +4,12 @@ import { AppConfig } from './types/appConfig'
 
 dotenv.config()
 
-const env: AppConfig = cleanEnv(process.env, {
+export const env: AppConfig = cleanEnv(process.env, {
   FASTIFY_PORT: port({
     default: 8888
   }),
+  FASTIFY_HOST: url({
+    default: '0.0.0.0'
+  }),
   MONGO_CONNECTION_STRING: url()
 })
-
-export { env }

@@ -6,9 +6,7 @@ import { establishConnection } from './plugins/mongodb'
 import { TodoRouter } from './routes/todo'
 import { AppConfig } from './types/appConfig'
 
-const listenAddress = '0.0.0.0'
-
-const startFastify = async (appConfig: AppConfig) => {
+export const serverOf: () => FastifyInstance = () => {
   const server: FastifyInstance = fastify({
     logger: {
       transport: {
@@ -17,17 +15,6 @@ const startFastify = async (appConfig: AppConfig) => {
       level: 'debug'
     }
   })
-
-  if (appConfig.MONGO_CONNECTION_STRING) {
-    try {
-      await establishConnection(appConfig.MONGO_CONNECTION_STRING)
-      server.log.info(`Mongo connect successfully`)
-    } catch (error) {
-      server.log.fatal(`Failed to connect mongodb: ${error}`)
-      throw new Error(`${error}`)
-    }
-  }
-
   server.register(FastifyCors, {})
 
   server.register(FastifyStatic, {
@@ -41,18 +28,25 @@ const startFastify = async (appConfig: AppConfig) => {
 
   server.register(TodoRouter, { prefix: '/api' })
 
-  const fastifyConfig = {
-    port: appConfig.FASTIFY_PORT,
-    host: listenAddress
-  }
-
-  try {
-    await server.listen(fastifyConfig)
-  } catch (error) {
-    server.log.fatal(`${error}`)
-  }
-
   return server
 }
 
-export { startFastify }
+export const serverStart: (server: FastifyInstance) => (appConfig: AppConfig) => Promise<FastifyInstance> =
+  (server) => async (appConfig) => {
+    if (appConfig.MONGO_CONNECTION_STRING) {
+      try {
+        await establishConnection(appConfig.MONGO_CONNECTION_STRING)
+        server.log.info(`Mongo connect successfully`)
+      } catch (error) {
+        server.log.fatal(`Failed to connect mongodb: ${error}`)
+        throw new Error(`${error}`)
+      }
+    }
+
+    await server.listen({
+      port: appConfig.FASTIFY_PORT,
+      host: appConfig.FASTIFY_HOST
+    })
+
+    return server
+  }

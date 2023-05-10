@@ -1,10 +1,13 @@
-import { startFastify } from './server'
+import { serverOf, serverStart } from './server'
 import { env } from './config'
 import { AppConfig } from './types/appConfig'
 
+const server = serverOf()
+
 const appConfig: AppConfig = {
   FASTIFY_PORT: env.FASTIFY_PORT,
+  FASTIFY_HOST: env.FASTIFY_HOST,
   MONGO_CONNECTION_STRING: env.MONGO_CONNECTION_STRING
 }
 
-startFastify(appConfig)
+serverStart(server)(appConfig)

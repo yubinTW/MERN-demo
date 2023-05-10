@@ -1,24 +1,24 @@
 import { FastifyInstance } from 'fastify'
-import { startFastify } from '../server'
-import { Server, IncomingMessage, ServerResponse } from 'http'
+import { serverOf, serverStart } from '../server'
 import * as dbHandler from 'testcontainers-mongoose'
 import { Todo } from '../types/todo'
 import { AppConfig } from '../types/appConfig'
 import { describe, beforeAll, afterEach, afterAll, expect, it } from 'vitest'
 
 describe('Todo test', () => {
-  let server: FastifyInstance<Server, IncomingMessage, ServerResponse>
+  const server: FastifyInstance = serverOf()
   const fastifyPort = 8888
 
   beforeAll(async () => {
     await dbHandler.connect()
     const appConfig: AppConfig = {
       FASTIFY_PORT: fastifyPort,
+      FASTIFY_HOST: '0.0.0.0',
       MONGO_CONNECTION_STRING: ''
     }
-    server = await startFastify(appConfig)
+    await serverStart(server)(appConfig)
     await server.ready()
-  }, 300000)
+  }, 300_000)
 
   afterEach(async () => {
     await dbHandler.clearDatabase()
