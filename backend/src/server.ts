@@ -1,7 +1,8 @@
-import fastify, { FastifyInstance } from 'fastify'
-import FastifyStatic from '@fastify/static'
 import FastifyCors from '@fastify/cors'
+import FastifyStatic from '@fastify/static'
+import fastify, { FastifyInstance } from 'fastify'
 import path from 'path'
+
 import { establishConnection } from './plugins/mongodb'
 import { TodoRouter } from './routes/todo'
 import { AppConfig } from './types/appConfig'

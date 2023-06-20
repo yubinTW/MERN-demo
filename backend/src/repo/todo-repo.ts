@@ -1,5 +1,5 @@
-import { Todo } from './../types/todo'
 import TodoModel from './../models/todo'
+import { Todo } from './../types/todo'
 
 export const getTodos: () => Promise<Array<Todo>> = () => {
   return TodoModel.find().exec()

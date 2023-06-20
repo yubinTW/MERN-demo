@@ -1,5 +1,6 @@
-import { Todo } from './../types/todo'
 import mongoose from 'mongoose'
+
+import { Todo } from './../types/todo'
 
 const todoSchema: mongoose.Schema = new mongoose.Schema(
   {

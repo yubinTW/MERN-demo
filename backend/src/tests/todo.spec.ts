@@ -1,9 +1,10 @@
 import { FastifyInstance } from 'fastify'
-import { serverOf, serverStart } from '../server'
 import * as dbHandler from 'testcontainers-mongoose'
-import { Todo } from '../types/todo'
+import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
+
+import { serverOf, serverStart } from '../server'
 import { AppConfig } from '../types/appConfig'
-import { describe, beforeAll, afterEach, afterAll, expect, it } from 'vitest'
+import { Todo } from '../types/todo'
 
 describe('Todo test', () => {
   const server: FastifyInstance = serverOf()

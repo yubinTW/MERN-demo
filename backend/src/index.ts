@@ -1,5 +1,5 @@
-import { serverOf, serverStart } from './server'
 import { env } from './config'
+import { serverOf, serverStart } from './server'
 import { AppConfig } from './types/appConfig'
 
 const server = serverOf()
