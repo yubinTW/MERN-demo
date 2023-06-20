@@ -10,7 +10,8 @@
     "dev": "concurrently \"tsc -w \" \"nodemon dist/index.js\"",
     "check-prettier": "prettier --check \"./src/**/*.ts\"",
     "fix-prettier": "prettier --write \"./src/**/*.ts\"",
-    "check-lint": "eslint --color package.json \"src/**/*.ts\""
+    "check-lint": "eslint --color package.json \"src/**/*.ts\"",
+    "fix-lint": "eslint --fix\"src/**/*.ts\""
   },
   "keywords": [
     "MERN-demo"
@@ -35,6 +36,7 @@
     "@vitest/coverage-c8": "^0.31.4",
     "concurrently": "^8.2.0",
     "eslint": "^8.42.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "nodemon": "^2.0.22",
     "prettier": "^2.8.8",
     "testcontainers-mongoose": "^2.0.2",
