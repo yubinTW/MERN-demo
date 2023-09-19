@@ -10,7 +10,8 @@
     "dev": "concurrently \"tsc -w \" \"nodemon dist/index.js\"",
     "check-prettier": "prettier --check \"./src/**/*.ts\"",
     "fix-prettier": "prettier --write \"./src/**/*.ts\"",
-    "check-lint": "eslint --color package.json \"src/**/*.ts\""
+    "check-lint": "eslint --color package.json \"src/**/*.ts\"",
+    "fix-lint": "eslint --fix \"src/**/*.ts\""
   },
   "keywords": [
     "MERN-demo"

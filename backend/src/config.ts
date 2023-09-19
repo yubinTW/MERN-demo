@@ -1,5 +1,6 @@
-import { cleanEnv, port, url } from 'envalid'
 import * as dotenv from 'dotenv'
+import { cleanEnv, port, url } from 'envalid'
+
 import { AppConfig } from './types/appConfig'
 
 dotenv.config()
