@@ -1,32 +1,34 @@
 import { FastifyInstance } from 'fastify'
 import { serverOf, serverStart } from '../server'
-import * as dbHandler from 'testcontainers-mongoose'
 import { Todo } from '../types/todo'
 import { AppConfig } from '../types/appConfig'
 import { describe, beforeAll, afterEach, afterAll, expect, it } from 'vitest'
+import { startedMongoTestContainerOf, StartedMongoTestContainer } from 'testcontainers-mongoose'
 
 describe('Todo test', () => {
   const server: FastifyInstance = serverOf()
   const fastifyPort = 8888
 
+  let mongoContainer: StartedMongoTestContainer
+
   beforeAll(async () => {
-    await dbHandler.connect()
+    mongoContainer = await startedMongoTestContainerOf()
     const appConfig: AppConfig = {
       FASTIFY_PORT: fastifyPort,
       FASTIFY_HOST: '0.0.0.0',
-      MONGO_CONNECTION_STRING: ''
+      MONGO_CONNECTION_STRING: mongoContainer.getUri()
     }
     await serverStart(server)(appConfig)
     await server.ready()
   }, 300_000)
 
   afterEach(async () => {
-    await dbHandler.clearDatabase()
+    await mongoContainer.clearDatabase()
   })
 
   afterAll(async () => {
-    await dbHandler.closeDatabase()
     await server.close()
+    await mongoContainer.closeDatabase()
     console.log('Closing Fastify server is done!')
   })
 

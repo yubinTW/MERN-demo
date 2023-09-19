@@ -33,14 +33,12 @@ export const serverOf: () => FastifyInstance = () => {
 
 export const serverStart: (server: FastifyInstance) => (appConfig: AppConfig) => Promise<FastifyInstance> =
   (server) => async (appConfig) => {
-    if (appConfig.MONGO_CONNECTION_STRING) {
-      try {
-        await establishConnection(appConfig.MONGO_CONNECTION_STRING)
-        server.log.info(`Mongo connect successfully`)
-      } catch (error) {
-        server.log.fatal(`Failed to connect mongodb: ${error}`)
-        throw new Error(`${error}`)
-      }
+    try {
+      await establishConnection(appConfig.MONGO_CONNECTION_STRING)
+      server.log.info(`Mongo connect successfully`)
+    } catch (error) {
+      server.log.fatal(`Failed to connect mongodb: ${error}`)
+      throw new Error(`${error}`)
     }
 
     await server.listen({
