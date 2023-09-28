@@ -19,28 +19,28 @@
   "author": "Yubin",
   "license": "ISC",
   "dependencies": {
-    "@fastify/cors": "^8.3.0",
+    "@fastify/cors": "^8.4.0",
     "@fastify/static": "^6.11.2",
-    "@sinclair/typebox": "^0.28.20",
+    "@sinclair/typebox": "^0.31.17",
     "dotenv": "^16.3.1",
-    "envalid": "^7.3.1",
+    "envalid": "^8.0.0",
     "fastify": "^4.23.2",
     "fp-ts": "^2.16.1",
-    "mongoose": "^7.5.2",
+    "mongoose": "^7.5.3",
     "pino-pretty": "^10.2.0"
   },
   "devDependencies": {
-    "@types/node": "^18.17.17",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "@vitest/coverage-v8": "^0.34.4",
+    "@types/node": "^18.18.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "@vitest/coverage-v8": "^0.34.5",
     "concurrently": "^8.2.1",
-    "eslint": "^8.49.0",
+    "eslint": "^8.50.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "testcontainers-mongoose": "^2.2.0",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.5"
   }
 }
