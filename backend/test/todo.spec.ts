@@ -2,9 +2,9 @@ import { FastifyInstance } from 'fastify'
 import { StartedMongoTestContainer, startedMongoTestContainerOf } from 'testcontainers-mongoose'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 
-import { serverOf, serverStart } from '../server'
-import { AppConfig } from '../types/appConfig'
-import { Todo } from '../types/todo'
+import { serverOf, serverStart } from '../src/server'
+import { AppConfig } from '../src/types/appConfig'
+import { Todo } from '../src/types/todo'
 
 describe('Todo test', () => {
   const server: FastifyInstance = serverOf()
@@ -53,7 +53,6 @@ describe('Todo test', () => {
 
     expect(response.statusCode).toBe(201)
     const res: { todo: Todo } = JSON.parse(response.body)
-    console.log(`post Todo: ${response.body}`)
     expect(res.todo.name).toBe('clean my desk')
     expect(res.todo.description).toBe('Should clean my desk before the remote meeting at 15:00.')
     expect(res.todo.status).toBe(false)
@@ -62,7 +61,6 @@ describe('Todo test', () => {
     const getResponse = await server.inject({ method: 'GET', url: '/api/todos' })
     expect(getResponse.statusCode).toBe(200)
     const res2: { todos: Array<Todo> } = JSON.parse(getResponse.body)
-    console.log(`get Todos: ${getResponse.body}`)
     expect(res2.todos.length).toBe(1)
     expect(res2.todos[0].name).toBe('clean my desk')
     expect(res2.todos[0].description).toBe('Should clean my desk before the remote meeting at 15:00.')
@@ -82,7 +80,6 @@ describe('Todo test', () => {
 
     expect(response.statusCode).toBe(201)
     const res: { todo: Todo } = JSON.parse(response.body)
-    console.log(`post Todo: ${response.body}`)
     expect(res.todo.name).toBe('clean my desk')
     expect(res.todo.description).toBe('Should clean my desk before the remote meeting at 15:00.')
     expect(res.todo.status).toBe(false)
@@ -98,7 +95,6 @@ describe('Todo test', () => {
     })
     expect(updateByIdResponse.statusCode).toBe(200)
     const res2: { todo: Todo } = JSON.parse(updateByIdResponse.body)
-    console.log(`update Todo: ${updateByIdResponse.body}`)
     expect(res2.todo.name).toBe('clean my desk')
     expect(res2.todo.description).toBe('Should clean my desk before the remote meeting at 15:00.')
     expect(res2.todo.status).toBe(true)
@@ -117,7 +113,6 @@ describe('Todo test', () => {
 
     expect(response.statusCode).toBe(201)
     const res: { todo: Todo } = JSON.parse(response.body)
-    console.log(`post Todo: ${response.body}`)
     expect(res.todo.name).toBe('clean my desk')
     expect(res.todo.description).toBe('Should clean my desk before the remote meeting at 15:00.')
     expect(res.todo.status).toBe(false)

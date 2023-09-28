@@ -8,10 +8,10 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "concurrently \"tsc -w \" \"nodemon dist/index.js\"",
-    "check-prettier": "prettier --check \"./src/**/*.ts\"",
-    "fix-prettier": "prettier --write \"./src/**/*.ts\"",
-    "check-lint": "eslint --color package.json \"src/**/*.ts\"",
-    "fix-lint": "eslint --fix \"src/**/*.ts\""
+    "check-prettier": "prettier --check \"./{src,test}/**/*.ts\"",
+    "fix-prettier": "prettier --write \"./{src,test}/**/*.ts\"",
+    "check-lint": "eslint --color package.json \"{src,test}/**/*.ts\"",
+    "fix-lint": "eslint --fix \"{src,test}/**/*.ts\""
   },
   "keywords": [
     "MERN-demo"
