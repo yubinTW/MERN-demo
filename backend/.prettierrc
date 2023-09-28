@@ -3,5 +3,6 @@
   "singleQuote": true,
   "printWidth": 120,
   "trailingComma": "none",
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "parser": "typescript"
 }

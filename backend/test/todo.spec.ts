@@ -8,14 +8,13 @@ import { Todo } from '../src/types/todo'
 
 describe('Todo test', () => {
   const server: FastifyInstance = serverOf()
-  const fastifyPort = 8888
 
   let mongoContainer: StartedMongoTestContainer
 
   beforeAll(async () => {
     mongoContainer = await startedMongoTestContainerOf()
     const appConfig: AppConfig = {
-      FASTIFY_PORT: fastifyPort,
+      FASTIFY_PORT: 8888,
       FASTIFY_HOST: '0.0.0.0',
       MONGO_CONNECTION_STRING: mongoContainer.getUri()
     }
@@ -30,7 +29,6 @@ describe('Todo test', () => {
   afterAll(async () => {
     await server.close()
     await mongoContainer.closeDatabase()
-    console.log('Closing Fastify server is done!')
   })
 
   it('should successfully get a empty list of Todos', async () => {

@@ -4,7 +4,7 @@ import { postTodosBodySchema, todoResponseSchema, todosResponseSchema } from '..
 import { Todo } from '../types/todo'
 import * as repo from './../repo/todo-repo'
 
-const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: (error?: Error) => void) => {
+export const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: (error?: Error) => void) => {
   interface IdParam {
     id: string
   }
@@ -82,5 +82,3 @@ const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: 
 
   done()
 }
-
-export { TodoRouter }

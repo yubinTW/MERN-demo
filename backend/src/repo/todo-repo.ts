@@ -1,18 +1,11 @@
 import TodoModel from './../models/todo'
 import { Todo } from './../types/todo'
 
-export const getTodos: () => Promise<Array<Todo>> = () => {
-  return TodoModel.find().exec()
-}
+export const getTodos: () => Promise<Array<Todo>> = () => TodoModel.find().exec()
 
-export const addTodo: (todoBody: Todo) => Promise<Todo> = (todoBody) => {
-  return TodoModel.create(todoBody)
-}
+export const addTodo: (todoBody: Todo) => Promise<Todo> = (todoBody) => TodoModel.create(todoBody)
 
-export const updateTodo: (id: string, todoBody: Todo) => Promise<Todo | null> = (id, todoBody) => {
-  return TodoModel.findByIdAndUpdate(id, todoBody, { new: true })
-}
+export const updateTodo: (id: string, todoBody: Todo) => Promise<Todo | null> = (id, todoBody) =>
+  TodoModel.findByIdAndUpdate(id, todoBody, { new: true })
 
-export const deleteTodo: (id: string) => Promise<Todo | null> = (id) => {
-  return TodoModel.findByIdAndDelete(id)
-}
+export const deleteTodo: (id: string) => Promise<Todo | null> = (id) => TodoModel.findByIdAndDelete(id)
