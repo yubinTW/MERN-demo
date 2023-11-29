@@ -8,8 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "check-prettier": "prettier --check \"./src/**/*.{ts,tsx,css}\"",
-    "fix-prettier": "prettier --write \"./src/**/*.{ts,tsx,css}\""
+    "check-prettier": "prettier --check \"./src/**/*.{ts,tsx}\"",
+    "fix-prettier": "prettier --write \"./src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "axios": "^1.6.2",
