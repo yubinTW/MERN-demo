@@ -1,5 +1,7 @@
 # MERN Demo
 
+[![Node.js CI](https://github.com/yubinTW/MERN-demo/actions/workflows/node.js.yml/badge.svg)](https://github.com/yubinTW/MERN-demo/actions/workflows/node.js.yml)
+
 Mongo + Fastify + React + Node
 
 ## Build Frontend
