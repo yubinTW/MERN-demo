@@ -1,3 +1,5 @@
+import { ModifyResult } from 'mongoose'
+
 import TodoModel from './../models/todo'
 import { Todo } from './../types/todo'
 
@@ -8,4 +10,4 @@ export const addTodo: (todoBody: Todo) => Promise<Todo> = (todoBody) => TodoMode
 export const updateTodo: (id: string, todoBody: Todo) => Promise<Todo | null> = (id, todoBody) =>
   TodoModel.findByIdAndUpdate(id, todoBody, { new: true })
 
-export const deleteTodo: (id: string) => Promise<Todo | null> = (id) => TodoModel.findByIdAndDelete(id)
+export const deleteTodo: (id: string) => Promise<ModifyResult<Todo>> = (id) => TodoModel.findByIdAndDelete(id).exec()

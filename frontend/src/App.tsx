@@ -26,13 +26,13 @@ const App = () => {
   const handleSaveTodo = (e: React.FormEvent, formData: ITodo): void => {
     e.preventDefault()
     addTodo(formData)
-      .then((_) => fetchTodos())
+      .then(() => fetchTodos())
       .catch((err) => console.error(err))
   }
 
   const handleUpdateTodo = (todo: ITodo): void => {
     updateTodo(todo)
-      .then((_) => fetchTodos())
+      .then(() => fetchTodos())
       .catch((err) => console.error(err))
   }
 
