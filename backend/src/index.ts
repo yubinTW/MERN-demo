@@ -11,8 +11,8 @@ const appConfig: AppConfig = {
 }
 
 serverStart(server)(appConfig)
-  .then(() => {
-    console.log(`Start server successfully`)
+  .then((server) => {
+    server.log.info(`Start server successfully`)
   })
   .catch((error) => {
     console.log(`Failed to start server: ${error}`)
