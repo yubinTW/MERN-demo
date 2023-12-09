@@ -1,7 +1,7 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify'
 
-import * as repo from '../repo/todo'
 import { postTodosBodySchema, todoResponseSchema, todosResponseSchema } from '../responseSchemas/todo'
+import { addTodo, deleteTodo, getTodos, updateTodo } from '../services/todo'
 import { Todo } from '../types/todo'
 
 export const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: (error?: Error) => void) => {
@@ -20,7 +20,7 @@ export const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions,
 
   server.get('/todos', getTodosResponseSchema, async (request, reply) => {
     try {
-      const todos = await repo.getTodos()
+      const todos = await getTodos()
       return reply.status(200).send({ todos })
     } catch (error) {
       server.log.error(`GET /todos Error: ${error}`)
@@ -41,7 +41,7 @@ export const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions,
   server.post('/todos', postTodosOptions, async (request, reply) => {
     try {
       const todoBody = request.body as Todo
-      const todo = await repo.addTodo(todoBody)
+      const todo = await addTodo(todoBody)
       return reply.status(201).send({ todo })
     } catch (error) {
       server.log.error(`POST /todos Error: ${error}`)
@@ -53,7 +53,7 @@ export const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions,
     try {
       const id = request.params.id
       const todoBody = request.body
-      const todo = await repo.updateTodo(id, todoBody)
+      const todo = await updateTodo(id, todoBody)
       if (todo) {
         return reply.status(200).send({ todo })
       } else {
@@ -68,7 +68,7 @@ export const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions,
   server.delete<{ Params: IdParam }>('/todos/:id', opts, async (request, reply) => {
     try {
       const id = request.params.id
-      const todo = await repo.deleteTodo(id)
+      const todo = await deleteTodo(id)
       if (todo) {
         return reply.status(204).send()
       } else {
