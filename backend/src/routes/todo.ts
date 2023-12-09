@@ -1,6 +1,6 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify'
 
-import { postTodosBodySchema, todoResponseSchema, todosResponseSchema } from '../schemas/todo'
+import { postTodosBodySchema, todoResponseSchema, todosResponseSchema } from '../responseSchemas/todo'
 import { Todo } from '../types/todo'
 import * as repo from './../repo/todo-repo'
 
