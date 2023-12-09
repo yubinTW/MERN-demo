@@ -18,7 +18,7 @@
     "MERN-demo"
   ],
   "author": "Yubin",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@fastify/cors": "^8.4.2",
     "@fastify/static": "^6.12.0",
