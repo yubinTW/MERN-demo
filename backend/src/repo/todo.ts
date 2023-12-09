@@ -1,7 +1,7 @@
 import { ModifyResult } from 'mongoose'
 
-import TodoModel from './../models/todo'
-import { Todo } from './../types/todo'
+import TodoModel from '../models/todo'
+import { Todo } from '../types/todo'
 
 export const getTodos: () => Promise<Array<Todo>> = () => TodoModel.find().exec()
 

@@ -1,8 +1,8 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify'
 
+import * as repo from '../repo/todo'
 import { postTodosBodySchema, todoResponseSchema, todosResponseSchema } from '../responseSchemas/todo'
 import { Todo } from '../types/todo'
-import * as repo from './../repo/todo-repo'
 
 export const TodoRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done: (error?: Error) => void) => {
   interface IdParam {
