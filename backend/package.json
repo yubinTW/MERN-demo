@@ -33,14 +33,14 @@
     "@types/node": "^20.10.4",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
-    "@vitest/coverage-v8": "^1.0.3",
+    "@vitest/coverage-v8": "^1.0.4",
     "concurrently": "^8.2.2",
     "eslint": "^8.55.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "nodemon": "^3.0.2",
     "prettier": "^3.1.0",
-    "testcontainers-mongoose": "^3.0.2",
+    "testcontainers-mongoose": "^4.1.1",
     "typescript": "^5.3.3",
-    "vitest": "^1.0.3"
+    "vitest": "^1.0.4"
   }
 }
