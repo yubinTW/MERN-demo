@@ -1,22 +1,22 @@
 import { FastifyInstance } from 'fastify'
-import { StartedMongoTestContainer, startedMongoTestContainerOf } from 'testcontainers-mongoose'
+import { startedMongoTestContainerOf } from 'testcontainers-mongoose'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 
 import { serverOf, serverStart } from '../src/server'
 import { AppConfig } from '../src/types/appConfig'
 import { Todo } from '../src/types/todo'
 
-describe('Todo test', () => {
+describe('Todo test', async () => {
   const server: FastifyInstance = serverOf()
 
-  let mongoContainer: StartedMongoTestContainer
+  const imageName = 'mongo:7.0.4'
+  const mongoContainer = await startedMongoTestContainerOf(imageName)
 
   beforeAll(async () => {
-    mongoContainer = await startedMongoTestContainerOf()
     const appConfig: AppConfig = {
       FASTIFY_PORT: 8888,
       FASTIFY_HOST: '0.0.0.0',
-      MONGO_CONNECTION_STRING: mongoContainer.getUri()
+      MONGO_CONNECTION_STRING: `${mongoContainer.getConnectionString()}?directConnection=true`
     }
     await serverStart(server)(appConfig)
     await server.ready()
